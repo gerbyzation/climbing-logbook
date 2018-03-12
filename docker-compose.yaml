@@ -1,0 +1,19 @@
+version: "3"
+services:
+  server:
+    build: .
+    links:
+    - db
+    ports:
+    - 5000:5000
+    volumes:
+    - .:/usr/srv/app
+
+  db:
+    image: cockroachdb/cockroach:v1.1.5
+    ports:
+    - 8080:8080
+    - 26257:26257
+    volumes:
+    - ./cockroach-data/db:/cockroach/cockroach-data
+    command: ['start', '--insecure']

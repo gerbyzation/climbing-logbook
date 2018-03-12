@@ -1,0 +1,9 @@
+{
+  "dev": {
+    "driver": "cockroachdb",
+    "user": "maxroach",
+    "host": "db",
+    "port": "26257",
+    "database": "logbook"
+   }
+}
