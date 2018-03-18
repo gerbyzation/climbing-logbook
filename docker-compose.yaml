@@ -6,8 +6,10 @@ services:
     - db
     ports:
     - 5000:5000
+    command: ["node_modules/.bin/nodemon", "src/index.js"]
     volumes:
     - .:/usr/srv/app
+    - /usr/srv/app/node_modules
 
   db:
     image: cockroachdb/cockroach:v1.1.5
