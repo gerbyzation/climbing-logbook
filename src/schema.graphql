@@ -1,0 +1,36 @@
+type Route {
+  id: ID
+  name: String!
+  grade: Grade
+  type: String
+}
+
+type Grade {
+  id: ID
+  name: String
+}
+
+type User {
+  id: ID!
+  name: String
+  email: String
+}
+
+type Entry {
+  id: ID!
+  Climber: User
+  date: Date
+  style: String
+  Route: Route
+  Partners: [User]
+}
+
+scalar Date
+
+type Query {
+  User(id: ID, name: String): User
+  Route(id: ID, name: String): Route
+  Routes(grade: String): [Route]
+  Entry: Entry
+  Entries(climber_name: String, grade: String, route_name: String): [Entry]
+}
