@@ -1,7 +1,7 @@
 CREATE TABLE users (
-  id INT PRIMARY KEY AUTOINCREMENT,
+  id SERIAL PRIMARY KEY,
   name STRING NOT NULL,
-  email: STRING NOT NULL UNIQUE
+  email STRING NOT NULL UNIQUE
 );
 
 CREATE TABLE grades (
@@ -31,7 +31,7 @@ CREATE TABLE ascent_styles (
 
 CREATE TABLE entries (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  climber UUID NOT NULL REFERENCES users,
+  climber SERIAL NOT NULL REFERENCES users,
   date DATE,
   style UUID REFERENCES ascent_styles,
   route UUID NOT NULL REFERENCES routes,
@@ -41,9 +41,9 @@ CREATE TABLE entries (
 );
 
 CREATE TABLE entry_partners (
-  id UUID PRIMARY_KEY DEFAULT gen_random_uuid(),
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   entry UUID NOT NULL REFERENCES entries,
-  partner UUID NOT NULL REFERENCES users,
+  partner SERIAL NOT NULL REFERENCES users,
   INDEX (entry),
   INDEX (partner)
 );
