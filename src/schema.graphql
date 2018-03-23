@@ -3,6 +3,7 @@ type Route {
   name: String!
   grade: Grade
   type: String
+  ascents: [Entry]
 }
 
 type Grade {
@@ -30,7 +31,7 @@ scalar Date
 type Query {
   User(id: ID, name: String): User
   Route(id: ID, name: String): Route
-  Routes(grade: String): [Route]
+  Routes(ids: [ID], grade: String): [Route]
   Entry: Entry
   Entries(climber_name: String, grade: String, route_name: String): [Entry]
 }
